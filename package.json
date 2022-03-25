@@ -1,0 +1,16 @@
+{
+  "name": "valormercado-webscraping",
+  "version": "1.0.0",
+  "description": "Procura o valor de produtos de mercado, baseado em uma lista de mercados onlines fornecidos pelo usuário.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "progress": "^2.0.3",
+    "puppeteer": "^13.5.1"
+  }
+}
