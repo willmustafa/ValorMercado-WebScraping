@@ -8,7 +8,7 @@ const musamar = require('./mercados/musamar.js');
 const almeida = require('./mercados/almeida.js');
 const condor = require('./mercados/condor.js');
 
-(async () => {
+async function pegaNome(){
     const browser = await pup.launch({
         headless: true,
         defaultViewport: {
@@ -25,13 +25,16 @@ const condor = require('./mercados/condor.js');
     let produtosFinais = [];
 
     produtosFinais.push(await muffato.procuraProdutos(page, searchFor));
-    // produtosFinais.push(await cidadeCancao.procuraProdutos(page, searchFor));
-    // produtosFinais.push(await musamar.procuraProdutos(page, searchFor));
-    // produtosFinais.push(await almeida.procuraProdutos(page, searchFor));
-    // produtosFinais.push(await condor.procuraProdutos(page, searchFor));
+    produtosFinais.push(await cidadeCancao.procuraProdutos(page, searchFor));
+    produtosFinais.push(await musamar.procuraProdutos(page, searchFor));
+    produtosFinais.push(await almeida.procuraProdutos(page, searchFor));
+    produtosFinais.push(await condor.procuraProdutos(page, searchFor));
 
     await fs.writeFileSync(path.join(__dirname, "../docs/resultado.json"), JSON.stringify(produtosFinais));
 
     await browser.close();
 
-})()
+    return produtosFinais;
+}
+
+module.exports.pegaNome = pegaNome;

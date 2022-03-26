@@ -18,4 +18,23 @@ async function inserirBD(dados){
     
 }
 
-module.exports.inserirBD = inserirBD;
+async function gravarBD(array){
+    let dataHoje = new Date().toLocaleString('pt-BR', {
+        dateStyle: 'short'
+    });
+
+    let stringQuery = [];
+
+    for (let i = 0; i < array.length; i++) {
+        let mercado = array[i][0];
+        for (let k = 0; k < array[i][1].length; k++) {
+            const titulo = array[i][1][k][0];
+            const valor = array[i][1][k][1];
+            const href = array[i][1][k][2];
+            stringQuery.push([dataHoje, mercado, titulo, valor, href]);
+        }
+    }
+
+    await inserirBD(stringQuery);
+}
+module.exports.gravarBD = gravarBD;
