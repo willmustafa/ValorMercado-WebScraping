@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "googleapis": "^99.0.0",
+    "node-fetch": "^2.6.6",
+    "pg": "^8.7.3",
     "progress": "^2.0.3",
     "puppeteer": "^13.5.1"
   }

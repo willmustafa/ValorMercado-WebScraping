@@ -154,7 +154,7 @@ module.exports = class Mercado {
 
             }
 
-            produtos[1].push([titulo, this.validaValor(preco)]);
+            produtos[1].push([titulo, this.validaValor(preco), this.searchFor[i]]);
 
             this.progressBar.tick();
 

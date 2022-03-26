@@ -10,7 +10,7 @@ const mercado = require('../Mercado.js');
  */
 async function procuraProdutos(page, searchFor) {
 
-    const mercadoClass = new mercado('almeida', searchFor);
+    const mercadoClass = new mercado('almeidaMercados', searchFor);
     mercadoClass.setlimite(1);
 
     await pageOpen(mercadoClass, page);
