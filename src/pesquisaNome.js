@@ -8,7 +8,7 @@ const musamar = require('./mercados/musamar.js');
 const almeida = require('./mercados/almeida.js');
 const condor = require('./mercados/condor.js');
 
-async function pegaNome(){
+async function pesquisaNome(){
     const browser = await pup.launch({
         headless: true,
         defaultViewport: {
@@ -37,4 +37,4 @@ async function pegaNome(){
     return produtosFinais;
 }
 
-module.exports.pegaNome = pegaNome;
+module.exports.pesquisaNome = pesquisaNome;

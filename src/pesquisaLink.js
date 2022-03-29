@@ -10,7 +10,7 @@ const condor = require('./mercados/condor.js');
 
 async function pesquisaLink(){
     const browser = await pup.launch({
-        headless: true,
+        headless: false,
         defaultViewport: {
             width: 1800,
             height: 800,
@@ -24,16 +24,15 @@ async function pesquisaLink(){
 
     let produtosFinais = [];
 
-    // produtosFinais.push(await muffato.procuraProdutosLinks(page, searchFor["muffato"]));
+    produtosFinais.push(await muffato.procuraProdutosLinks(page, searchFor["muffato"]));
     produtosFinais.push(await cidadeCancao.procuraProdutosLinks(page, searchFor["cidadeCancao"]));
-    // produtosFinais.push(await musamar.procuraProdutosLinks(page, searchFor["musamar"]));
-    // produtosFinais.push(await almeida.procuraProdutosLinks(page, searchFor["almeidaMercados"]));
-    // produtosFinais.push(await condor.procuraProdutosLinks(page, searchFor["condor"]));
+    produtosFinais.push(await musamar.procuraProdutosLinks(page, searchFor["musamar"]));
+    produtosFinais.push(await almeida.procuraProdutosLinks(page, searchFor["almeidaMercados"]));
+    produtosFinais.push(await condor.procuraProdutosLinks(page, searchFor["condor"]));
 
     await fs.writeFileSync(path.join(__dirname, "../docs/resultado.json"), JSON.stringify(produtosFinais));
 
     await browser.close();
-
     return produtosFinais;
 }
 

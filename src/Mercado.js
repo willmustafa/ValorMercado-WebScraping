@@ -12,7 +12,7 @@ module.exports = class Mercado {
         this.specificWait = this.listaMercados[this.mercado].specificWait;
     }
 
-    setlimite(valor){
+    setlimite(valor) {
         this.limite = valor
     }
 
@@ -118,47 +118,60 @@ module.exports = class Mercado {
 
         let produtos = [this.mercado, []];
 
+
         for (let i = 0; i < this.searchFor.length; i++) {
 
-            // Aguarda o reload da página
-            await Promise.all([
-                page.waitForNavigation({
-                    waitUntil: "domcontentloaded"
-                }),
-                await page.goto(this.searchFor[i])
-            ])
-
-            await page.waitForTimeout(2000);
-
-            await page.waitForSelector(this.listaMercados[this.mercado].link_produtoTitulo);
-
-            // Procura os elementos dos produtos listados
-            const titulo = await page.$eval(this.listaMercados[this.mercado].link_produtoTitulo, x => x.innerText);
-
-            let preco = "";
-
-            if (this.listaMercados[this.mercado].link_produtoPromocao !== '') {
-                try {
-                    await page.waitForSelector(selector_price, {
-                        timeout: 200
-                    })
-                    preco = await page.$eval(this.listaMercados[this.mercado].link_produtoPromocao, x => x.innerText);
-                } catch {
-
-                }
-            }
-
             try {
-                preco = await page.$eval(this.listaMercados[this.mercado].link_produtoPreco, x => x.innerText);
-            } catch {
+                // Aguarda o reload da página
+                await Promise.all([
+                    page.waitForNavigation({
+                        waitUntil: "domcontentloaded"
+                    }),
+                    await page.goto(this.searchFor[i])
+                ])
+    
+                await page.waitForTimeout(2000);
+    
+                if (!page.url().includes('ProductLinkNotFound')) {
+    
+                    await page.waitForSelector(this.listaMercados[this.mercado].link_produtoTitulo);
+    
+                    // Procura os elementos dos produtos listados
+                    const titulo = await page.$eval(this.listaMercados[this.mercado].link_produtoTitulo, x => x.innerText);
+    
+                    let preco = "";
+    
+                    if (this.listaMercados[this.mercado].link_produtoPromocao !== '') {
+                        try {
+                            await page.waitForSelector(selector_price, {
+                                timeout: 200
+                            })
+                            preco = await page.$eval(this.listaMercados[this.mercado].link_produtoPromocao, x => x.innerText);
+                        } catch {
+    
+                        }
+                    }
+    
+                    try {
+                        preco = await page.$eval(this.listaMercados[this.mercado].link_produtoPreco, x => x.innerText);
+                    } catch {
+    
+                    }
+    
+                    produtos[1].push([titulo, this.validaValor(preco), this.searchFor[i]]);
+    
+                }
 
+            } catch (error) {
+                console.log("Erro no link: " + this.searchFor[i]);
+                console.log(error)
             }
-
-            produtos[1].push([titulo, this.validaValor(preco), this.searchFor[i]]);
+            
 
             this.progressBar.tick();
 
         }
+
 
         return produtos;
     }

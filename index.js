@@ -10,7 +10,7 @@ let listaProdutos = '';
             break;
         case 'arquivo':
             const pegaNome = require('./src/pesquisaNome');
-            listaProdutos = await pegaNome.pesquisaLink();
+            listaProdutos = await pegaNome.pesquisaNome();
             break;
         default:
             console.log('Adicione a opção desejada: "link" para abrir o arquivo com a lista de links ou "arquivo" para o arquivo de nome de produtos');
