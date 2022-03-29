@@ -10,7 +10,7 @@ const condor = require('./mercados/condor.js');
 
 async function pesquisaLink(){
     const browser = await pup.launch({
-        headless: false,
+        headless: true,
         defaultViewport: {
             width: 1800,
             height: 800,

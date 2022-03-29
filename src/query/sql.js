@@ -106,17 +106,3 @@ module.exports.getUnidades = getUnidades;
 module.exports.end = async function end() {
     await pgClient.end();
 };
-
-
-/*
-BEGIN
-   IF NOT EXISTS (SELECT * FROM EmailsRecebidos 
-                   WHERE De = @_DE
-                   AND Assunto = @_ASSUNTO
-                   AND Data = @_DATA)
-   BEGIN
-       INSERT INTO EmailsRecebidos (De, Assunto, Data)
-       VALUES (@_DE, @_ASSUNTO, @_DATA)
-   END
-END
-*/

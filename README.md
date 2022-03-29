@@ -12,3 +12,4 @@
  [X] Salvar em um banco de dados local
  [ ] Salvar em um Google Sheets
  [ ] Maiores interações pelo usuário
+ [ ] Front-End
