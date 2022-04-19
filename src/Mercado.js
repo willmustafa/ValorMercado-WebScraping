@@ -3,176 +3,97 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = class Mercado {
-    constructor(mercadoSelecionado, searchArray) {
+    constructor(mercadosArray, searchArray) {
         this.progressBar = '';
-        this.limite = 3;
+        this.limite = 100;
         this.searchFor = searchArray;
-        this.mercado = mercadoSelecionado;
-        this.listaMercados = JSON.parse(fs.readFileSync(path.join(__dirname, '../docs/listaMercados.json'), 'utf-8'));
-        this.specificWait = this.listaMercados[this.mercado].specificWait;
+        this.mercadosToSearch = mercadosArray;
+        // this.specificWait = this.listaMercados[this.mercado].specificWait;
+        this.listaMercados = {
+            "muffato": {
+                "link": "https://delivery.supermuffato.com.br/",
+                "nome": "Super Muffato",
+                "id": "14",
+                "searchInput": ".fulltext-search-box",
+                "searchButton": "#header-btn-search",
+                "specificWait": ".prd-list-item-desc > .prd-list-item-link",
+                "listaProdutos": ".prd-list-item-desc > .prd-list-item-link",
+                "produtoTitulo": ".prd-list-item-name",
+                "produtoPrecoPromocao": "",
+                "produtoPreco": ".prd-list-item-price-sell",
+                "link_produtoTitulo": ".productName",
+                "link_produtoPreco": ".skuBestPrice",
+                "link_produtoPromocao": ""
+            },
+            "musamar": {
+                "link": "https://www.sitemercado.com.br/supermercadosmusamar/londrina-loja-jardim-centro-r-pio-xii",
+                "nome": "Musamar",
+                "id": "",
+                "searchInput": "app-previous-auto-complete input.form-control",
+                "searchButton": ".header-area-btn-search",
+                "specificWait": "div:not(.fake-loading).products-view.ng-star-inserted a.list-product-link",
+                "listaProdutos": "app-list-product-item",
+                "produtoTitulo": "h3 > .list-product-link",
+                "produtoPreco": ".area-bloco-preco",
+                "link_produtoTitulo": ".product-desc .ng-star-inserted h1",
+                "link_produtoPreco": ".area-preco-detalhe-produto .bloco-preco",
+                "link_produtoPromocao": ""
+            },
+            "condor": {
+                "link": "https://www.condor.com.br/",
+                "nome": "Condor",
+                "id": "32",
+                "searchInput": "app-header input.form-control",
+                "searchButton": "enter",
+                "specificWait": "app-product",
+                "listaProdutos": "section#search > div > div.row app-product",
+                "produtoTitulo": ".title",
+                "produtoPrecoPromocao": ".price",
+                "produtoPreco": ".price-normal",
+                "link_produtoTitulo": "#DetalheProduto h2.titulo",
+                "link_produtoPreco": ".precos .clube p",
+                "link_produtoPromocao": ""
+            },
+            "cidadeCancao": {
+                "link": "https://londrina.cidadecancao.com/",
+                "nome": "Cidade Canção",
+                "id": "86060060",
+                "searchInput": "form #search",
+                "searchButton": "form #form-search-button",
+                "specificWait": ".category-products .item",
+                "listaProdutos": ".category-products .item",
+                "produtoTitulo": ".product-name > a",
+                "produtoPrecoPromocao": ".special-price .price",
+                "produtoPreco": ".price-box .price",
+                "link_produtoTitulo": ".product-shop .product-name h2",
+                "link_produtoPreco": ".price-box .price",
+                "link_produtoPromocao": ""
+            },
+            "almeidaMercados": {
+                "link": "https://www.sitemercado.com.br/almeidamercados/londrina-loja-armazem-da-moda-amaro-rua-aracatuba",
+                "nome": "Almeida Mercados",
+                "id": "86060060",
+                "searchInput": "app-previous-auto-complete input.form-control",
+                "searchButton": ".header-area-btn-search",
+                "specificWait": "div:not(.fake-loading).products-view.ng-star-inserted a.list-product-link",
+                "listaProdutos": "app-list-product-item",
+                "produtoTitulo": "h3 > .list-product-link",
+                "produtoPreco": ".area-bloco-preco",
+                "link_produtoTitulo": ".product-desc .ng-star-inserted h1",
+                "link_produtoPreco": ".area-preco-detalhe-produto .bloco-preco",
+                "link_produtoPromocao": ""
+            }
+        };
     }
 
     setlimite(valor) {
         this.limite = valor
     }
 
-    setprogressbar() {
-        this.progressBar = new ProgressBar(':bar :percent de :total itens.', {
-            total: this.limite * this.searchFor.length
+    setprogressbar(ntotal, item) {
+        this.progressBar = new ProgressBar(`${item} \n :bar :percent de :total itens.`, {
+            total: ntotal
         })
     }
-
-    validaValor(valor) {
-        if (valor.includes("R$")) {
-            valor = valor.replace("R$", "")
-        }
-
-        if (valor.includes("cada")) {
-            valor = valor.replace("cada", "")
-        }
-
-        return parseFloat(valor.replace(",", "."))
-    }
-
-    async searchProducts(page) {
-        this.setprogressbar();
-
-        let produtos = [this.mercado, []];
-        for (let i = 0; i < this.searchFor.length; i++) {
-
-            // Faz a pesquisa e aguarda a página carregar
-            const input = await page.$(this.listaMercados[this.mercado].searchInput);
-            await input.click({
-                clickCount: 3
-            })
-            await input.type(this.searchFor[i], {
-                delay: 20
-            });
-
-            await page.waitForTimeout(2000);
-
-            try {
-                await Promise.all([
-                    page.waitForNavigation({
-                        waitUntil: 'load'
-                    }),
-                    await input.press('Enter')
-                ]);
-
-            } catch (error) {
-
-                await Promise.all([
-                    page.waitForNavigation({
-                        waitUntil: 'load'
-                    }),
-                    await page.click(this.listaMercados[this.mercado].searchButton)
-
-                ]);
-            }
-
-            await page.waitForTimeout(2000);
-
-            // Procura os elementos dos produtos listados
-            const produtosLista = await page.$$(this.listaMercados[this.mercado].listaProdutos);
-
-            let k = 0;
-            // Retorna os dados da página
-            for (const link of produtosLista) {
-                if (k == this.limite) {
-                    break;
-                }
-                const titulo = await link.$eval(this.listaMercados[this.mercado].produtoTitulo, x => x.innerText);
-
-                let preco = "";
-
-                if (this.listaMercados[this.mercado].produtoPrecoPromocao !== '') {
-                    try {
-                        await page.waitForSelector(selector_price, {
-                            timeout: 200
-                        })
-                        preco = await link.$eval(this.listaMercados[this.mercado].produtoPrecoPromocao, x => x.innerText);
-                    } catch {
-
-                    }
-                }
-
-                try {
-                    preco = await link.$eval(this.listaMercados[this.mercado].produtoPreco, x => x.innerText);
-                } catch {
-
-                }
-
-                produtos[1].push([titulo, this.validaValor(preco)]);
-
-                this.progressBar.tick();
-                k++;
-            }
-
-        }
-
-        return produtos;
-    }
-
-    async searchLink(page) {
-        this.setprogressbar();
-
-        let produtos = [this.mercado, []];
-
-
-        for (let i = 0; i < this.searchFor.length; i++) {
-
-            try {
-                // Aguarda o reload da página
-                await Promise.all([
-                    page.waitForNavigation({
-                        waitUntil: "domcontentloaded"
-                    }),
-                    await page.goto(this.searchFor[i])
-                ])
     
-                await page.waitForTimeout(2000);
-    
-                if (!page.url().includes('ProductLinkNotFound')) {
-    
-                    await page.waitForSelector(this.listaMercados[this.mercado].link_produtoTitulo);
-    
-                    // Procura os elementos dos produtos listados
-                    const titulo = await page.$eval(this.listaMercados[this.mercado].link_produtoTitulo, x => x.innerText);
-    
-                    let preco = "";
-    
-                    if (this.listaMercados[this.mercado].link_produtoPromocao !== '') {
-                        try {
-                            await page.waitForSelector(selector_price, {
-                                timeout: 200
-                            })
-                            preco = await page.$eval(this.listaMercados[this.mercado].link_produtoPromocao, x => x.innerText);
-                        } catch {
-    
-                        }
-                    }
-    
-                    try {
-                        preco = await page.$eval(this.listaMercados[this.mercado].link_produtoPreco, x => x.innerText);
-                    } catch {
-    
-                    }
-    
-                    produtos[1].push([titulo, this.validaValor(preco), this.searchFor[i]]);
-    
-                }
-
-            } catch (error) {
-                console.log("Erro no link: " + this.searchFor[i]);
-                console.log(error)
-            }
-            
-
-            this.progressBar.tick();
-
-        }
-
-
-        return produtos;
-    }
 }

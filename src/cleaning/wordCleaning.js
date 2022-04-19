@@ -65,11 +65,13 @@ function pegaUltimoNumero(word){
 }
 
 function maiorStringArray(arr){
-    return arr.reduce(
-        function (a, b) {
-            return a.length > b.length ? a : b;
-        }
-    );
+    if(arr.length >= 1){
+        return arr.reduce(
+            function (a, b) {
+                return a.length > b.length ? a : b;
+            }
+        );
+    }
 }
 
 module.exports.separaDados = separaDados;

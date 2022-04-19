@@ -4,7 +4,8 @@
   "description": "Procura o valor de produtos de mercado, baseado em uma lista de mercados onlines fornecidos pelo usuário.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index palavras"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
     "node-fetch": "^2.6.6",
     "pg": "^8.7.3",
     "progress": "^2.0.3",
+    "prompt-sync": "^4.2.0",
     "puppeteer": "^13.5.1"
   }
 }
