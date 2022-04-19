@@ -15,11 +15,4 @@ let listaProdutos = '';
 
     await file.createFile_CurrentDate('./docs/results/resultados', listaProdutos)
     
-    switch (args[1]){
-        case 'bd':
-            const sql = require('./src/query/sql.js');
-            await sql.gravarBD(listaProdutos);
-            break;
-    }
-
 })()

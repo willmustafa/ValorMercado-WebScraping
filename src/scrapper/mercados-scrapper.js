@@ -1,13 +1,17 @@
-const validator = require('../utils/validator')
+const cleaning = require('../cleaning/stringCleaner')
+let mercadoClass = ''
+let page = ''
+const musamar = require('./mercados/musamar')
+const almeida = require('./mercados/almeida')
+const condor = require('./mercados/condor')
+const cidadeCancao = require('./mercados/cidadeCancao')
+const muffato = require('./mercados/muffato')
 
-async function searchProducts(mercadoClass, page) {
-    const musamar = require('./mercados/musamar')
-    const almeida = require('./mercados/almeida')
-    const condor = require('./mercados/condor')
-    const cidadeCancao = require('./mercados/cidadeCancao')
-    const muffato = require('./mercados/muffato')
-
+async function searchProducts(_mercadoClass, _page) {
+    
     let produtos = []
+    mercadoClass = _mercadoClass
+    page = _page
 
     // Itera a lista de Mercados para pesquisar
     for (let f = 0; f < mercadoClass.mercadosToSearch.length; f++) {
@@ -19,8 +23,11 @@ async function searchProducts(mercadoClass, page) {
 
         let currentSearchProducts = []
 
+        mercadoClass.setprogressbar(mercadoClass.searchFor.length)
         // Itera a lista de produtos para pesquisar
         for (let i = 0; i < mercadoClass.searchFor.length; i++) {
+
+            mercadoClass.progressBar.tick();
 
             // Checa se o termo para pesquisa não é vazio
             if (mercadoClass.searchFor[i] !== '') {
@@ -31,80 +38,24 @@ async function searchProducts(mercadoClass, page) {
                 })
 
                 // Faz a pesquisa e aguarda a página carregar
-                const input = await page.$(mercadoClass.listaMercados[currentMercado].searchInput);
-                await input.click({
-                    clickCount: 3
-                })
-                await input.type(mercadoClass.searchFor[i], {
-                    delay: 20
-                });
-
-                // // Espera 2 segundos para evitar problemas em sites que usam react
-                // await page.waitForTimeout(2000);
-
-                // Tenta dar enter na pesquisa, se não, tenta clicar no botão de search
-                try {
-                    await Promise.all([
-                        page.waitForNavigation({
-                            waitUntil: 'load'
-                        }),
-                        await input.press('Enter')
-                    ]);
-
-                } catch (error) {
-
-                    await Promise.all([
-                        page.waitForNavigation({
-                            waitUntil: 'load'
-                        }),
-                        await page.click(mercadoClass.listaMercados[currentMercado].searchButton)
-
-                    ]);
-                }
-
-                // Espera 2 segundos para evitar problemas em sites que usam react
-                // await page.waitForTimeout(1000);
+                await botaoPesquisa(currentMercado, i)
 
                 // Procura os elementos dos produtos listados
+                await page.waitForSelector(mercadoClass.listaMercados[currentMercado].listaProdutos)
                 const produtosLista = await page.$$(mercadoClass.listaMercados[currentMercado].listaProdutos);
-
-                mercadoClass.setprogressbar(produtosLista.length, mercadoClass.searchFor[i]);
 
                 // Retorna os dados da página
                 for (const link of produtosLista) {
                     const titulo = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoTitulo, x => x.innerText);
 
-                    let preco = "";
-
-                    // Se a classe tem um item para preço em promoção
-                    if (mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao !== '') {
-                        try {
-                            await page.waitForSelector(selector_price, {
-                                timeout: 200
-                            })
-                            preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao, x => x.innerText);
-                        } catch {
-
-                        }
-                    } else {
-                        try {
-                            preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPreco, x => x.innerText);
-                        } catch {
-
-                        }
-
-                    }
+                    let preco = await getPreco(currentMercado, link)
 
                     currentSearchProducts[i].results.push({
-                            titulo,
-                            preco
-                        })
-
-                    mercadoClass.progressBar.tick();
+                        titulo,
+                        preco
+                    })
                 }
             }
-
-
         }
 
         produtos.push({
@@ -114,6 +65,56 @@ async function searchProducts(mercadoClass, page) {
     }
 
     return produtos
+}
+
+async function getPreco(currentMercado, link) {
+    let preco = ""
+
+    // Se a classe tem um item para preço em promoção
+    if (mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao !== '') {
+        preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao, x => x.innerText);
+
+    } else {
+        preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPreco, x => x.innerText);
+    }
+
+    return cleaning.limpaPrecos(preco)
+}
+
+async function botaoPesquisa(currentMercado, i){
+    // Faz a pesquisa e aguarda a página carregar
+    await page.waitForSelector(mercadoClass.listaMercados[currentMercado].searchInput)
+    const input = await page.$(mercadoClass.listaMercados[currentMercado].searchInput);
+    try {
+        await input.click({
+            clickCount: 3
+        })
+    } catch {
+        
+    }
+    await input.type(mercadoClass.searchFor[i], {
+        delay: 20
+    });
+
+    // // Espera 2 segundos para evitar problemas em sites que usam react
+    await page.waitForTimeout(2000);
+
+    // Tenta dar enter na pesquisa, se não, tenta clicar no botão de search
+    try {
+        await Promise.all([
+            page.waitForNavigation({
+                waitUntil: 'load'
+            }),
+            await input.press('Enter')
+        ]);
+    } catch (error) {
+        await Promise.all([
+            page.waitForNavigation({
+                waitUntil: 'load'
+            }),
+            await page.click(mercadoClass.listaMercados[currentMercado].searchButton)
+        ]);
+    }
 }
 
 module.exports = {

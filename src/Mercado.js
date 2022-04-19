@@ -90,8 +90,8 @@ module.exports = class Mercado {
         this.limite = valor
     }
 
-    setprogressbar(ntotal, item) {
-        this.progressBar = new ProgressBar(`${item} \n :bar :percent de :total itens.`, {
+    setprogressbar(ntotal) {
+        this.progressBar = new ProgressBar(`:bar :percent de :total itens.`, {
             total: ntotal
         })
     }

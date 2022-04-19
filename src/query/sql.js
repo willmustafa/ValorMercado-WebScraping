@@ -161,7 +161,7 @@ ALTER TABLE ONLY public.historico
 
 console.log(dbconfig);
 const pgClient = new pg.Client(`postgres://postgres:${dbconfig.user}@${dbconfig.url}/mercados`);
-const clean = require('../cleaning/wordCleaning')
+const clean = require('../cleaning/stringCleaner')
 
 try {
     pgClient.connect();

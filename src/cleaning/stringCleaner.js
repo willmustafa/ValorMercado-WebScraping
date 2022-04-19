@@ -1,4 +1,4 @@
-function validaValor(valor) {
+function limpaPrecos(valor) {
     if (valor.includes("R$")) {
         valor = valor.replace("R$", "")
     }
@@ -11,5 +11,5 @@ function validaValor(valor) {
 }
 
 module.exports = {
-    validaValor
+    limpaPrecos
 }
