@@ -4,226 +4,591 @@
         "searchedTerm": "café",
         "results": [{
             "titulo": "Café Itamaraty Tradicional Vácuo 500g",
-            "preco": 14.99
+            "produto": {
+                "preco": 14.99,
+                "marca": "Itamaraty",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Itamaraty Extra Forte Vácuo 500g",
-            "preco": 14.99
+            "produto": {
+                "preco": 14.99,
+                "marca": "Itamaraty",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café LaSanté Tradicional a Vácuo 500g",
-            "preco": 16.99
+            "produto": {
+                "preco": 16.99,
+                "marca": "lasante",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Odebrecht Tradicional a Vácuo 500g",
-            "preco": 16.09
+            "produto": {
+                "preco": 16.09,
+                "marca": "Odebrecht",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Caboclo Puro a Vácuo 500g",
-            "preco": 15.98
+            "produto": {
+                "preco": 15.98,
+                "marca": "Caboclo",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Solúvel Nescafé Cremoso 150g",
-            "preco": 13.89
+            "produto": {
+                "preco": 13.89,
+                "marca": "Nescafé ",
+                "unidade": "g",
+                "valorUnidade": "150"
+            }
         }, {
             "titulo": "Café Pilão 252°graus Vácuo 500g",
-            "preco": 16.98
+            "produto": {
+                "preco": 16.98,
+                "marca": "Pilão",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Joquinha Torrado e Moído 500g",
-            "preco": 15.99
+            "produto": {
+                "preco": 15.99,
+                "marca": "Joquinha",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Melitta Regiões Brasileiras Sul de Minas 250g",
-            "preco": 14.98
+            "produto": {
+                "preco": 14.98,
+                "marca": "Melitta ",
+                "unidade": "g",
+                "valorUnidade": "250"
+            }
         }, {
             "titulo": "Café Starbucks Colombia Torra Média 250g",
-            "preco": 26.9
+            "produto": {
+                "preco": 26.9,
+                "marca": "Starbucks",
+                "unidade": "g",
+                "valorUnidade": "250"
+            }
         }, {
             "titulo": "Café L'or Torrado e Moído Sul de Minas Pouch 250g",
-            "preco": 23.9
+            "produto": {
+                "preco": 23.9,
+                "marca": "l'or",
+                "unidade": "g",
+                "valorUnidade": "250"
+            }
         }, {
             "titulo": "Café em Cápsula Illy Espresso Forte 57g",
-            "preco": 24.9
+            "produto": {
+                "preco": 24.9,
+                "marca": "Illy",
+                "unidade": "g",
+                "valorUnidade": "57"
+            }
         }, {
             "titulo": "Café em Cápsula Illy Espresso Intenso 57g",
-            "preco": 24.9
+            "produto": {
+                "preco": 24.9,
+                "marca": "Illy",
+                "unidade": "g",
+                "valorUnidade": "57"
+            }
         }, {
             "titulo": "Café em Cápsula L'or Espresso Indonésia com 10 Cápsulas",
-            "preco": 23.9
+            "produto": {
+                "preco": 23.9,
+                "marca": "l'or",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café Solúvel NESCAFÉ Origens Chapada Diamantina 90g",
-            "preco": 17.09
+            "produto": {
+                "preco": 17.09,
+                "marca": "Nescafé ",
+                "unidade": "g",
+                "valorUnidade": "90"
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Mochaccino Canela 16 Cápsulas",
-            "preco": 25.99
+            "produto": {
+                "preco": 25.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Cortado Espresso Macchiato 16 Cápsulas",
-            "preco": 25.99
+            "produto": {
+                "preco": 25.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café em Cápsulas Tres Espresso Ameno 80g",
-            "preco": 17.98
+            "produto": {
+                "preco": 17.98,
+                "marca": "Tres ",
+                "unidade": "g",
+                "valorUnidade": "80"
+            }
         }, {
             "titulo": "Café em Cápsulas Tres Atento 80g",
-            "preco": 17.98
+            "produto": {
+                "preco": 17.98,
+                "marca": "Tres ",
+                "unidade": "g",
+                "valorUnidade": "80"
+            }
         }, {
             "titulo": "Café em Cápsulas Tres Café Coado Clássico 75g",
-            "preco": 17.98
+            "produto": {
+                "preco": 17.98,
+                "marca": "Tres ",
+                "unidade": "g",
+                "valorUnidade": "75"
+            }
         }, {
             "titulo": "Café com Leite em Cápsula Tres 90g",
-            "preco": 17.98
+            "produto": {
+                "preco": 17.98,
+                "marca": "Tres ",
+                "unidade": "g",
+                "valorUnidade": "90"
+            }
         }, {
             "titulo": "Café Damasco Intenso a Vácuo 500g",
-            "preco": 16.98
+            "produto": {
+                "preco": 16.98,
+                "marca": "Damasco",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Espresso Intenso 16 Cápsulas",
-            "preco": 25.99
+            "produto": {
+                "preco": 25.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Chococino 16 Cápsulas",
-            "preco": 25.99
+            "produto": {
+                "preco": 25.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café Do Ponto Exportação 500g",
-            "preco": 24.59
+            "produto": {
+                "preco": 24.59,
+                "marca": "Do Ponto",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Cereja Torrado e Moído Pacote 500g",
-            "preco": 12.49
+            "produto": {
+                "preco": 12.49,
+                "marca": "Cereja",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Jandaia a Vácuo 500g",
-            "preco": 16.49
+            "produto": {
+                "preco": 16.49,
+                "marca": "Jandaia",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Melitta Tradicional a Vácuo 500g",
-            "preco": 20.48
+            "produto": {
+                "preco": 20.48,
+                "marca": "Melitta ",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Pilão Tradicional a Vácuo 500g",
-            "preco": 16.98
+            "produto": {
+                "preco": 16.98,
+                "marca": "Pilão",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Pilão Extra Forte a Vácuo 500g",
-            "preco": 16.98
+            "produto": {
+                "preco": 16.98,
+                "marca": "Pilão",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Melitta Sabor da Fazenda Tradicional 500g",
-            "preco": 19.98
+            "produto": {
+                "preco": 19.98,
+                "marca": "Melitta ",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Caboclo Extra Forte a Vácuo 500g",
-            "preco": 15.98
+            "produto": {
+                "preco": 15.98,
+                "marca": "Caboclo",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Londrinense Alto a Vácuo 500g",
-            "preco": 15.99
+            "produto": {
+                "preco": 15.99,
+                "marca": "Londrinense",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Café Solúvel Nescafé Tradição 50g",
-            "preco": 4.89
+            "produto": {
+                "preco": 4.89,
+                "marca": "Nescafé ",
+                "unidade": "g",
+                "valorUnidade": "50"
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto 6 Variedades com 30 Cápsulas",
-            "preco": 46.99
+            "produto": {
+                "preco": 46.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Café Au Lait 100g",
-            "preco": 19.39
+            "produto": {
+                "preco": 19.39,
+                "marca": "Dolce Gusto",
+                "unidade": "g",
+                "valorUnidade": "100"
+            }
         }, {
             "titulo": "Café Solúvel L'or Espresso 40g",
-            "preco": 6.49
+            "produto": {
+                "preco": 6.49,
+                "marca": "l'or",
+                "unidade": "g",
+                "valorUnidade": "40"
+            }
         }, {
             "titulo": "Café Nescafé Intensidade Máxima Premium 250g",
-            "preco": 13.09
+            "produto": {
+                "preco": 13.09,
+                "marca": "Nescafé ",
+                "unidade": "g",
+                "valorUnidade": "250"
+            }
         }, {
             "titulo": "Café em Cápsula L'or Espresso Guatemala com 10 Cápsulas",
-            "preco": 23.9
+            "produto": {
+                "preco": 23.9,
+                "marca": "l'or",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café Solúvel L'or Instantâneo Intense 90g",
-            "preco": 18.59
+            "produto": {
+                "preco": 18.59,
+                "marca": "l'or",
+                "unidade": "g",
+                "valorUnidade": "90"
+            }
         }, {
             "titulo": "Café Origens Nescafé Solúvel Alto Paranaíba 90g",
-            "preco": 17.09
+            "produto": {
+                "preco": 17.09,
+                "marca": "Nescafé ",
+                "unidade": "g",
+                "valorUnidade": "90"
+            }
         }, {
             "titulo": "Café Solúvel L'or Intense 50g",
-            "preco": 6.49
+            "produto": {
+                "preco": 6.49,
+                "marca": "l'or",
+                "unidade": "g",
+                "valorUnidade": "50"
+            }
         }, {
             "titulo": "Café Do Ponto Aralto 250g",
-            "preco": 17.89
+            "produto": {
+                "preco": 17.89,
+                "marca": "Do Ponto",
+                "unidade": "g",
+                "valorUnidade": "250"
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Espresso Intenso 10 Cápsulas",
-            "preco": 19.99
+            "produto": {
+                "preco": 19.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café em Cápsula Tres Café Filtrado Gourmet 75g",
-            "preco": 17.98
+            "produto": {
+                "preco": 17.98,
+                "marca": "Tres ",
+                "unidade": "g",
+                "valorUnidade": "75"
+            }
         }, {
             "titulo": "Café em Cápsula Nescafé Dolce Gusto Espresso Barista 16 Cápsulas",
-            "preco": 25.99
+            "produto": {
+                "preco": 25.99,
+                "marca": "Dolce Gusto",
+                "unidade": "capsulas",
+                "valorUnidade": ""
+            }
         }, {
             "titulo": "Café Melitta Solúvel Extra Forte 50g",
-            "preco": 4.99
+            "produto": {
+                "preco": 4.99,
+                "marca": "Melitta ",
+                "unidade": "g",
+                "valorUnidade": "50"
+            }
         }, {
             "titulo": "Café Jandaia Torrado e Moído Almofada 500g",
-            "preco": 16.49
+            "produto": {
+                "preco": 16.49,
+                "marca": "Jandaia",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }]
     }, {
         "searchedTerm": "arroz tipo 1",
         "results": [{
             "titulo": "Arroz Gladiador Tipo 1 5kg",
-            "preco": 17.59
+            "produto": {
+                "preco": 17.59,
+                "marca": "Gladiador",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Dellarroz Tipo 1 1kg",
-            "preco": 3.59
+            "produto": {
+                "preco": 3.59,
+                "marca": "Dellarroz",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
         }, {
             "titulo": "Arroz Diamante Tipo 1 Pacote 5kg",
-            "preco": 19.49
+            "produto": {
+                "preco": 19.49,
+                "marca": "Diamante",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Branco Frias Tipo 1 5kg",
-            "preco": 22.98
+            "produto": {
+                "preco": 22.98,
+                "marca": "Frias",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Branco Prato Fino Tipo 1 2kg",
-            "preco": 11.99
+            "produto": {
+                "preco": 11.99,
+                "marca": "Prato Fino",
+                "unidade": "kg",
+                "valorUnidade": "2"
+            }
         }, {
             "titulo": "Arroz Butui Branco Polido Tipo 1 5kg",
-            "preco": 16.49
+            "produto": {
+                "preco": 16.49,
+                "marca": "Butui",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Parboilizado Dellarroz Tipo 1 5kg",
-            "preco": 17.99
+            "produto": {
+                "preco": 17.99,
+                "marca": "Dellarroz",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Branco Tio João Tipo 1 1kg",
-            "preco": 5.69
-        }, {
-            "titulo": "Arroz Branco Prato Fino Tipo 1 5Kg",
-            "preco": 27.99
-        }, {
-            "titulo": "Arroz Branco Frias Extra Tipo 1 1kg",
-            "preco": 4.99
-        }, {
-            "titulo": "Arroz Parboilizado Prato Fino Tipo 1 1kg",
-            "preco": 5.89
+            "produto": {
+                "preco": 5.69,
+                "marca": "Tio João ",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
         }, {
             "titulo": "Arroz Polido Fabiana Tipo 1 5kg",
-            "preco": 15.99
+            "produto": {
+                "preco": 15.99,
+                "marca": "Fabiana",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
+        }, {
+            "titulo": "Arroz Branco Prato Fino Tipo 1 5Kg",
+            "produto": {
+                "preco": 27.99,
+                "marca": "Prato Fino",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
+        }, {
+            "titulo": "Arroz Branco Frias Extra Tipo 1 1kg",
+            "produto": {
+                "preco": 4.99,
+                "marca": "Frias",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
+        }, {
+            "titulo": "Arroz Parboilizado Prato Fino Tipo 1 1kg",
+            "produto": {
+                "preco": 5.89,
+                "marca": "Prato Fino",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
         }, {
             "titulo": "Arroz Branco Prato Fino Tipo 1 1kg",
-            "preco": 5.99
+            "produto": {
+                "preco": 5.99,
+                "marca": "Prato Fino",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
         }, {
             "titulo": "Arroz Tio João Tipo 1 Integral 1Kg",
-            "preco": 5.39
+            "produto": {
+                "preco": 5.39,
+                "marca": "Tio João ",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
         }, {
             "titulo": "Arroz Branco Tio João Tipo 1 5kg",
-            "preco": 27.99
+            "produto": {
+                "preco": 27.99,
+                "marca": "Tio João ",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Parboilizado Fabiana Premium Tipo 1 5kg",
-            "preco": 15.99
+            "produto": {
+                "preco": 15.99,
+                "marca": "Fabiana",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Parboilizado Tio João Tipo 1 5kg",
-            "preco": 23.99
-        }, {
-            "titulo": "Arroz Parboilizado Rampinelli Tipo 1 2kg",
-            "preco": 7.69
+            "produto": {
+                "preco": 23.99,
+                "marca": "Tio João ",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }, {
             "titulo": "Arroz Branco Tio João Tipo 1 2kg",
-            "preco": 11.49
+            "produto": {
+                "preco": 11.49,
+                "marca": "Tio João ",
+                "unidade": "kg",
+                "valorUnidade": "2"
+            }
         }, {
             "titulo": "Arroz Parboilizado Rampinelli Tipo 1 1kg",
-            "preco": 3.89
+            "produto": {
+                "preco": 3.89,
+                "marca": "Rampinelli",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
+        }, {
+            "titulo": "Arroz Parboilizado Rampinelli Tipo 1 2kg",
+            "produto": {
+                "preco": 7.69,
+                "marca": "Rampinelli",
+                "unidade": "kg",
+                "valorUnidade": "2"
+            }
         }, {
             "titulo": "Arroz Pilecco Nobre Longo Fino Tipo 1 2Kg",
-            "preco": 10.99
+            "produto": {
+                "preco": 10.99,
+                "marca": "Pilecco Nobre",
+                "unidade": "kg",
+                "valorUnidade": "2"
+            }
         }, {
             "titulo": "Arroz Branco Pilecco Nobre Longo Fino Tipo 1 1kg",
-            "preco": 5.29
+            "produto": {
+                "preco": 5.29,
+                "marca": "Pilecco Nobre",
+                "unidade": "kg",
+                "valorUnidade": "1"
+            }
         }, {
             "titulo": "Cereal Infantil Mucilon Nestlé Arroz e Aveia 600g",
-            "preco": 16.79
+            "produto": {
+                "preco": 16.79,
+                "marca": "Nestlé",
+                "unidade": "g",
+                "valorUnidade": "600"
+            }
         }, {
             "titulo": "Farinha Mãe Terra Mandioca Crua Orgânica Tipo 1 500g",
-            "preco": 9.19
+            "produto": {
+                "preco": 9.19,
+                "marca": "Mãe Terra",
+                "unidade": "g",
+                "valorUnidade": "500"
+            }
         }, {
             "titulo": "Farinha de Trigo Coamo Especial 5Kg",
-            "preco": 16.39
+            "produto": {
+                "preco": 16.39,
+                "marca": "Coamo",
+                "unidade": "kg",
+                "valorUnidade": "5"
+            }
         }]
     }]
 }]

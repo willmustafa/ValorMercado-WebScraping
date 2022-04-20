@@ -1,16 +1,14 @@
-const path = require('path');
 const pup = require('./utils/puppeteer-helper')
 const file = require('./utils/file-management')
-
 const Mercado = require('./Mercado')
-
-const scrapper = require('./scrapper/mercados-scrapper')
+const scrapper = require('./scrapper/produtos-scrapper')
+const cleaning = require('./cleaning/resultSplit')
 
 async function pesquisa(){
    
     const browser = await pup.openBrowser(true)
     
-    const searchFor = ((await file.readFile(path.join(__dirname,"../docs/searchFor/searchFor.txt"))).split(',')).map(x => x.replace('\n', ''))
+    const searchFor = ((await file.readFile("docs/searchFor/searchFor.txt")).split(',')).map(x => x.replace('\n', ''))
     
     const page = await browser.newPage();
     await pup.blockContent(page)
@@ -21,7 +19,7 @@ async function pesquisa(){
 
     await browser.close();
 
-    return scrappedProducts
+    return await cleaning.resultSplit(scrappedProducts)
 }
 
 module.exports = {

@@ -1,0 +1,12 @@
+kg,
+kilogramas,
+kilograma,
+litros,
+unidades,
+unidade,
+ml,
+l,
+gramas,
+g,
+capsula,
+capsulas

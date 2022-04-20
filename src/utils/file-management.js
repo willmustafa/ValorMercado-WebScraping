@@ -11,12 +11,10 @@ async function createFile(pathInput, data) {
     }
 }
 
-async function readFile(path) {
+async function readFile(pathInput) {
     let dataRead = ''
     try {
-        console.log('Lendo arquivo.')
-        dataRead = await fs.readFileSync(path, 'utf-8')
-        console.log('Arquivo lido com sucesso!')
+        dataRead = await fs.readFileSync(path.join(__dirname, `../../${pathInput}`), 'utf-8')
     } catch (error) {
         console.log(error)
     }finally{

@@ -52,7 +52,7 @@ async function searchProducts(_mercadoClass, _page) {
 
                     currentSearchProducts[i].results.push({
                         titulo,
-                        preco
+                        produto: {preco} 
                     })
                 }
             }
@@ -70,12 +70,16 @@ async function searchProducts(_mercadoClass, _page) {
 async function getPreco(currentMercado, link) {
     let preco = ""
 
-    // Se a classe tem um item para preço em promoção
-    if (mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao !== '') {
-        preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao, x => x.innerText);
+    try{
+        // Se a classe tem um item para preço em promoção
+        if (mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao !== '') {
+            preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPrecoPromocao, x => x.innerText);
+    
+        } else {
+            preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPreco, x => x.innerText);
+        }
+    }catch{
 
-    } else {
-        preco = await link.$eval(mercadoClass.listaMercados[currentMercado].produtoPreco, x => x.innerText);
     }
 
     return cleaning.limpaPrecos(preco)
