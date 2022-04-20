@@ -5,7 +5,7 @@
  Utiliza NodeJs e o plugin puppeteer para fazer as consultas.
 
  Implementações futuras:
- [ ] Destrinchar string do título para dividir entre produto, marca, unidade
+ [x] Destrinchar string do título para dividir entre produto, marca, unidade
  [ ] Salvar em um banco de dados local
  [ ] Salvar em um Google Sheets
  [ ] Maiores interações pelo usuário

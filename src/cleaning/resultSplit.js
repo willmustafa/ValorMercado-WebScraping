@@ -2,8 +2,6 @@ const cleaning = require('./stringCleaner')
 const file = require('../utils/file-management')
 
 async function resultSplit(dados){
-    dados = dados
-
     for (let i_dados = 0; i_dados < dados.length; i_dados++) {
 
         for (let i_produtos = 0; i_produtos < dados[i_dados].produtos.length; i_produtos++) {
